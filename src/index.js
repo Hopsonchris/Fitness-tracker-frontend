@@ -58,11 +58,30 @@ const App = () => {
   return (
     <div>
       <Navbar logout={logout} token={token} />
-      <Activites />
-      <Routines />
+      <Route
+        path="/activites"
+        element={<Activites activites={activites} setActivies={setActivies} />}
+      />
+
+      <Route
+        path="/routines"
+        element={<Routines routines={routines} setRoutines={setRoutines} />}
+      />
+
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile user={user} />} />
+        <Route
+          path="/profile"
+          element={
+            <Profile
+              user={user}
+              activites={activites}
+              setActivies={setActivies}
+              routines={routines}
+              setRoutines={setRoutines}
+            />
+          }
+        />
         <Route
           path="/register"
           element={
